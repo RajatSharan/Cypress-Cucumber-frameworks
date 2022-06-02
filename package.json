@@ -6,6 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
   "author": "Rajat sharan",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "dependencies": {
+    "cypress": "^10.0.1"
+  }
 }
