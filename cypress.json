@@ -1,5 +1,14 @@
 {
-        "testFiles": "**/*.feature"
-      
+        "testFiles": "**/*.feature",
+        "defaultCommandTimeout":8000,
+        "env": {
+                "url": "https://rahulshettyacademy.com"
+              },
+            
+              "retries": {
+            
+                "runMode": 1
+            
+              }
 
 }
