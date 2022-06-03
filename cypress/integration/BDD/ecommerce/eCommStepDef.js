@@ -1,4 +1,4 @@
-import {Given,When,Then} from "cypress-cucumber-preprocessor/steps";
+import {Given,When,Then, And} from "cypress-cucumber-preprocessor/steps";
 import HomePage from '../../../support/pageObject/HomePage'
 import ProductsePage from '../../../support/pageObject/ProductsPage'
 import ShopPage from '../../../support/pageObject/ShopPage'
@@ -8,6 +8,7 @@ const homepage=new HomePage()
 const productpage=new ProductsePage()
 const shoppage=new ShopPage()
 const purchasepage=new PurchasePage()
+let name 
 
 Given('I open ECommerce Page',()=>{
 
@@ -73,10 +74,33 @@ Then('select the country submit and verify Thankyou',()=>{
     expect(actualtext.includes('Success')).to.be.true
     })
     })
-
-
-
-
-
-
 }) 
+
+When('I fill the form details',function(dataTable)
+{
+
+    name =dataTable.rawTable[1][0]
+    homepage.getEditBox().type(dataTable.rawTable[1][0])
+    homepage.getGender().select(dataTable.rawTable[1][1])
+
+
+
+})
+
+Then('validate the forms behaviour',function(dataTable){
+
+
+    homepage.getTwoWayDataBiding().should('have.value',name)
+    homepage.getEditBox().should('have.attr','minlength','2')
+    homepage.getEntrepreneur().should('be.disabled')
+
+
+})
+
+And('select the Shop Page',()=>{
+
+    homepage.getShopTab().click()
+
+
+
+})
